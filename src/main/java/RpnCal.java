@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 public class RpnCal {
 
-	public int calculate(String expr) throws Exception {
+	public double calculate(String expr) throws Exception {
 		// TODO Auto-generated method stub
 		
 		if(expr.length()<0){
@@ -20,11 +20,14 @@ public class RpnCal {
 		op.add("-");
 		op.add("*");
 		op.add("/");
-		int result;
+		op.add("^");
+
+		
+		double result;
 		for(String exp : exparr){
 			if(op.contains(exp)){
-				int two = Integer.parseInt(st.pop());
-				int one = Integer.parseInt(st.pop());
+				double two = Double.parseDouble(st.pop());
+				double one = Double.parseDouble(st.pop());
 				switch(exp){
 				case "+":result = one + two;
 				st.push(String.valueOf(result));
@@ -37,15 +40,24 @@ public class RpnCal {
 				break;
 				case "/":result = one / two;
 				st.push(String.valueOf(result));
-				break;				
+				break;	
+				
 				}				
 				
-			}else{
+			}else if(exp.equals("%")){
+				double one = Double.parseDouble(st.pop());
+				 result = one/100;
+				 System.out.println(one +"res"+result);
+				 st.push(String.valueOf(result));
+			}
+			
+			
+			else{
 				st.push(exp);
 			}
 			
 		}
-		result = Integer.parseInt(st.pop());
+		result = Double.parseDouble(st.pop());
 		
 		return result;
 	}
