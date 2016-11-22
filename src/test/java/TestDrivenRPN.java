@@ -9,7 +9,7 @@ public class TestDrivenRPN extends TestCase{
 		String expr = "3,4,+,5,-";
 		RpnCal rpnc = new RpnCal();	
 		try {
-			assertEquals(2,rpnc.calculate(expr));
+			assertEquals(2.0,rpnc.calculate(expr));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -30,7 +30,7 @@ public class TestDrivenRPN extends TestCase{
 		String expr = "+,3,4,-,5";
 		RpnCal rpnc = new RpnCal();	
 		try {
-			assertEquals(2,rpnc.calculate(expr));
+			assertEquals(2.0,rpnc.calculate(expr));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			assertEquals("expr is empty",e.getMessage());
@@ -40,7 +40,7 @@ public class TestDrivenRPN extends TestCase{
 	public void testCase4() throws Exception{
 		String expr = "";
 		RpnCal rpnc = new RpnCal();	
-		assertEquals(2,rpnc.calculate(expr));
+		assertEquals(2.0,rpnc.calculate(expr));
 	}
 	
 	
